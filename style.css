@@ -20,15 +20,23 @@ body {
    开场区域：黑色背景+头像动画
    ========================================================================== */
 #intro-section {
-  background: linear-gradient(135deg, #1a1a1a, #333333); /* Dark gradient background */
-  color: white; /* White text */
-  padding: 100px 0; /* Increased vertical spacing for dramatic entrance */
-  text-align: center;
+  height: 80vh;
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#intro-wrapper {
+  width: 1200px;         /* 控制 SVG 展示宽度 */
+  margin-left: 0;        /* ✅ 靠左展示 */
 }
 
 #intro-svg {
   width: 100%;
-  height: 520px; /* Matches avatar height for full display */
+  height: 100%;
+  display: block;
 }
 
 .intro-avatar {
@@ -351,8 +359,9 @@ circle.highlightable {
    总结区域样式
    ========================================================================== */
 #summary-section {
-  width: 60%;
+  max-width: 1200px;
   margin: 120px auto;
+  padding: 0 20px;
 }
 
 #card-summary-area {
@@ -363,8 +372,9 @@ circle.highlightable {
 }
 
 #card-summary-area .card {
-  flex: 1;
+  flex: 1 1 30%;
   min-width: 250px;
+  max-width: 32%;
   padding: 1.5rem;
   border-radius: 12px;
   background: white;

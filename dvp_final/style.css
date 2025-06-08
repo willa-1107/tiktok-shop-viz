@@ -1,0 +1,386 @@
+/* style.css */
+
+/* ==========================================================================
+   1. GLOBAL BASE STYLES
+   全站的基础样式
+   ========================================================================== */
+body {
+  margin: 0;
+  font-family: 'Baloo 2', 'Comic Sans MS', cursive, sans-serif;
+  background-color: #ffffff; /* White background for clean professional look */
+  color: #111; /* Dark gray text for better readability */
+}
+
+/* ==========================================================================
+   2. INTRO SECTION
+   开场区域：黑色背景+头像动画
+   ========================================================================== */
+#intro-section {
+  background: linear-gradient(135deg, #1a1a1a, #333333); /* Dark gradient background */
+  color: white; /* White text */
+  padding: 100px 0; /* Increased vertical spacing for dramatic entrance */
+  text-align: center;
+}
+
+#intro-svg {
+  width: 100%;
+  height: 520px; /* Matches avatar height for full display */
+}
+
+.intro-avatar {
+  width: 500px;
+  height: 560px;
+  opacity: 0; /* Initially hidden */
+}
+
+.intro-bubble {
+  background-color: white;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: absolute;
+  opacity: 0; /* Initially hidden */
+  font-size: 14px;
+}
+
+.intro-question-box {
+  stroke: white;
+  fill: #fff;
+  rx: 16;
+  ry: 16;
+  paint-order: stroke;
+  stroke-width: 2px; /* Border thickness */
+}
+
+/* ==========================================================================
+   3. TITLE SECTION
+   标题区域样式
+   ========================================================================== */
+#title-section {
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* Animations */
+@keyframes dropIn {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+.title-drop {
+  opacity: 0;
+  font-size: 46px;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 40px;
+  font-family: "Comic Sans MS", "Nunito", cursive, sans-serif;
+}
+
+/* ==========================================================================
+   4. QUADRANT SECTION
+   象限区域样式
+   ========================================================================== */
+#quadrant-section {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.quadrant-intro {
+  font-size: 22px;
+  color: #444;
+  width: 60%;
+  margin: 20px auto 15px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.chart-intro {
+  font-size: 22px;
+  color: #444;
+  width: 60%;
+  margin: 40px auto 20px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. SLIDERS STYLES
+   滑块控件样式
+   ========================================================================== */
+#sliders {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px auto;
+}
+
+/* ==========================================================================
+   6. CHART AREAS
+   图表区域基础样式
+   ========================================================================== */
+#chart1-area, #chart2-area, #chart3-area, #chart4-area {
+  width: 60%;
+  height: 500px;
+  margin: auto;
+}
+
+.axis path,
+.axis line,
+.axis text {
+  font-family: "Comic Sans MS", "Patrick Hand", cursive;
+  font-size: 13px;
+}
+
+#chart1-area {
+  height: 650px; /* Slightly taller */
+  margin-top: 30px;
+}
+
+/* ==========================================================================
+   7. HIGHLIGHT STYLES
+   高亮效果样式
+   ========================================================================== */
+/* Highlight box (orange border) */
+.highlighted[data-highlight="box-core"] {
+  stroke: orange !important;
+  stroke-width: 3px !important;
+  opacity: 1 !important;
+}
+
+/* Highlight outliers (red hollow circles) */
+.highlighted.outlier {
+  fill: none !important;
+  stroke: red !important;
+  stroke-width: 2.5px !important;
+  r: 5px !important;
+  opacity: 1 !important;
+}
+
+/* ==========================================================================
+   8. TOOLTIP STYLES
+   工具提示样式
+   ========================================================================== */
+#custom-tooltip {
+  pointer-events: none !important;
+}
+
+circle.highlightable {
+  cursor: default !important;
+}
+
+#tooltip {
+  position: absolute; /* Floats above page */
+  background: rgba(0, 0, 0, 0.75); /* Semi-transparent black background */
+  color: #fff; /* White text */
+  padding: 6px 10px; /* Padding */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 12px; /* Font size */
+  line-height: 1.4em; /* Comfortable line height */
+  pointer-events: none; /* Doesn't interfere with mouse operations */
+  z-index: 9999; /* Stays on top */
+  display: none; /* Hidden by default */
+  white-space: nowrap; /* No wrapping */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+/* ==========================================================================
+   9. CHART 3 SPECIFIC STYLES
+   Chart 3 特定样式（固定图例）
+   ========================================================================== */
+/* All shapes fully opaque by default */
+.stacked-bar rect {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Only dim non-highlighted elements in active mode */
+.stacked-bar.active-mode rect:not(.highlighted) {
+  opacity: 0.1;
+}
+.stacked-bar.active-mode rect.highlighted {
+  opacity: 1;
+}
+
+/* Legend styling to remain unaffected by interactions */
+.legend {
+  pointer-events: none; /* Prevents legend from interfering with chart interactions */
+}
+
+.legend-item {
+  opacity: 1 !important; /* Forces legend items to remain fully visible */
+  transition: none !important; /* Disables any opacity transitions */
+}
+
+.legend-text {
+  fill: #333 !important; /* Forces legend text color to remain dark gray */
+}
+
+/* ==========================================================================
+   10. FILTERS STYLES
+   过滤器样式
+   ========================================================================== */
+#chart-filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+#scroll-filters {
+  position: sticky;
+  top: 60px;
+  z-index: 999;
+  max-width: 500px; /* Limits total width */
+  margin: 0 auto;
+  background: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  border-radius: 8px; /* Aesthetic improvement */
+  box-shadow: 0 0 6px rgba(0,0,0,0.1); /* Enhances block feeling */
+}
+
+/* ==========================================================================
+   11. SCROLLYTELLING LAYOUT
+   滚动图文布局样式
+   ========================================================================== */
+/* Outer horizontal layout container */
+#scrolly-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  margin: 100px auto;
+  align-items: flex-start;
+}
+
+/* Left blank column (1/5) */
+.left-blank {
+  width: 15%;
+}
+
+/* Middle chart area (3/5) */
+.chart-area {
+  width: 65%;
+  height: 650px;
+  position: sticky;
+  top: 200px; /* Smaller top to avoid covering step */
+}
+
+.scroll-text {
+  margin-top: 650px; /* Pushes up sticky chart area */
+  padding-top: 50px;
+}
+
+.long-step.active {
+  background-color: rgba(255, 0, 0, 0.15); /* Red tint background */
+}
+
+#scroll-chart-area {
+  width: 100%;
+  height: 550px;
+  opacity: 1;
+  transition: none;
+}
+
+.fade-in-static {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in-static.show {
+  opacity: 1;
+}
+
+/* Right scroll text area (1/5) */
+.scroll-text {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  padding-top: 80vh;
+  position: relative; /* Prevents nesting issues */
+}
+
+.scroll-filler {
+  min-height: 120vh; /* Leaves 80% screen blank for final paragraph to scroll up */
+}
+
+.long-step {
+  background: #f5faff;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 17px;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  margin-bottom: 200px;
+}
+
+.long-step.active {
+  opacity: 1;
+  transform: translateY(0);
+  background-color: #d0e9ff;
+}
+
+/* ==========================================================================
+   12. SUMMARY SECTION
+   总结区域样式
+   ========================================================================== */
+#summary-section {
+  width: 60%;
+  margin: 120px auto;
+}
+
+#card-summary-area {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#card-summary-area .card {
+  flex: 1;
+  min-width: 250px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-family: "Comic Sans MS", "Baloo 2", cursive;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #1f77b4;
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}

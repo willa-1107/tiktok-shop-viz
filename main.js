@@ -197,3 +197,23 @@ function scrollToTopAndResetFlow() {
     scroller.resize();  // Refresh scrollama's internal calculations
   }, 300);
 }
+
+
+// 9. Control filter bar visibility when entering summary section
+const filterBar = document.getElementById("filter-bar");
+const summarySection = document.getElementById("summary-section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      filterBar.style.display = "none";
+    } else {
+      filterBar.style.display = "flex";
+    }
+  });
+}, {
+  root: null,
+  threshold: 0.3
+});
+
+observer.observe(summarySection);

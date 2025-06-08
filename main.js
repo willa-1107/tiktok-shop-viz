@@ -24,7 +24,14 @@ let currentChart = null;  // Tracks which chart is currently active
 let enteredCharts = new Set();  // Tracks which charts have been entered during scroll
 
 // 2. Initialize intro animation
-const svg = d3.select("#intro-svg");
+const svg = d3.select("#intro-wrapper")
+  .append("svg")
+  .attr("id", "intro-svg")
+  .attr("viewBox", "0 0 1200 800")
+  .attr("preserveAspectRatio", "xMidYMid meet")  
+  .attr("width", "100%")
+  .attr("height", "100%");
+
 showIntro(svg);  // Show initial introduction animation
 
 // 3. Load data and initialize charts

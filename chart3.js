@@ -27,7 +27,7 @@ export function renderStackedBar(data, topN, selectedCategory, highlight = false
   const metrics = ["Related creator", "Related_video_cleaned", "Selling products"];
   const color = d3.scaleOrdinal()
     .domain(metrics)
-    .range(["#7aaedc", "#fbbd65", "#a6d4ae"]);  // Colors for creator, video, product
+    .range(["#b39ddb", "#f8bbd0", "#ffe082"]);  // Colors for creator, video, product
 
   // Filter data by selected category if not "All"
   let filtered = data;

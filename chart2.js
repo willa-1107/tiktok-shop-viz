@@ -1,6 +1,5 @@
 // chart2.js - Boxplot visualization component
-// This file contains the renderBoxplot function to display product count distribution
-// between top-performing and non-top shops, with interactive features.
+
 
 export function renderBoxplot(data, topN, selectedCategory, highlight = false) {
   // Get container element and its dimensions
@@ -136,7 +135,7 @@ export function renderBoxplot(data, topN, selectedCategory, highlight = false) {
       .attr("y", y(q3))
       .attr("height", y(q1) - y(q3))
       .attr("width", boxWidth)
-      .attr("fill", cat === "Top" ? "#1f77b4" : "#ccc")
+      .attr("fill", cat === "Top" ? "#1abc9c" : "#ccc")
       // Highlight styling if active
       .attr("stroke", highlight ? "black" : "none")
       .attr("stroke-width", highlight ? 2 : 0)
@@ -168,7 +167,7 @@ export function renderBoxplot(data, topN, selectedCategory, highlight = false) {
       .attr("cx", d => cx + boxWidth / 2 + d.cxOffset)
       .attr("cy", d => y(+d["Selling products"]))
       .attr("r", 3)
-      .attr("fill", cat === "Top" ? "#4a90e2" : "#cccccc")
+      .attr("fill", cat === "Top" ? "#1abc9c" : "#cccccc")
       .attr("stroke", "none")
       // Style outliers differently
       .attr("stroke-width", d => d["Selling products"] > q3 + 1.5 * iqr ? 2 : 0)
@@ -211,7 +210,7 @@ export function renderBoxplot(data, topN, selectedCategory, highlight = false) {
   // Top shops legend item
   legend.append("circle")
     .attr("cx", 0).attr("cy", 0).attr("r", 6)
-    .attr("fill", "#1f77b4");
+    .attr("fill", "#1abc9c");
   legend.append("text").attr("x", 10).attr("y", 5).text("Top").style("font-size", "13px");
 
   // Non-top shops legend item

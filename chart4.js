@@ -95,12 +95,12 @@ export function renderScatter(data, topN, selectedCategory, highlight = false) {
       const base = `highlightable ${+d["Unit_Price"] < unitPriceMedian ? "scatter-low" : "scatter-high"}`;
       return d.isTop ? `${base} scatter-top` : base;
     })
-    .attr("data-highlight", d => d.isTop ? "scatter-top" : null)  // ✅ 关键新增
+    .attr("data-highlight", d => d.isTop ? "scatter-top" : null)  // 
     .attr("data-name", d => d["Shop Name"]) // Support keyword binding lookup
     .attr("cx", d => x(+d["Unit_Price"]))
     .attr("cy", d => y(+d["Total_GMV_cleaned"]))
     .attr("r", d => highlight && d.isTop ? 10 : 6)  // Larger radius for highlighted/top shops
-    .attr("fill", d => d.isTop ? "#FF6B6B" : "#C0C0C0") // Coral red for top, silver gray for others
+    .attr("fill", d => d.isTop ? "#1abc9c" : "#C0C0C0") // Coral red for top, silver gray for others
     .attr("opacity", highlight ? 0.85 : 0.6)  // Adjust opacity based on highlight state
     .on("mouseover", (event, d) => {
       // Show tooltip with shop details
@@ -130,7 +130,7 @@ export function renderScatter(data, topN, selectedCategory, highlight = false) {
   // Add Top shop legend item
   legend.append("circle")
     .attr("cx", 0).attr("cy", 0).attr("r", 6)
-    .attr("fill", "#FF6B6B");
+    .attr("fill", "#1abc9c");
   legend.append("text").attr("x", 10).attr("y", 5).text("Top").style("font-size", "13px");
 
   // Add Non-top shop legend item
